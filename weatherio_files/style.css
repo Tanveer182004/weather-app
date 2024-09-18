@@ -1,3 +1,13 @@
+/*-----------------------------------*\
+  #style.css
+\*-----------------------------------*/
+
+/**
+ * copyright 2023 codewithsadee
+ */
+
+
+
 
 
 /*-----------------------------------*\
@@ -308,16 +318,13 @@ body {
 
 
 
-
-
-
 /*-----------------------------------*\
   #HEADER
 \*-----------------------------------*/
 
 .header .btn-primary .span { display: none; }
 
-.logo img { height: 120px; }
+.logo img { width: 150px; }
 
 .header .container,
 .header-actions {
@@ -427,8 +434,6 @@ body {
   inset: 0;
   box-shadow: none;
 }
-
-
 
 
 

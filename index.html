@@ -1,18 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <!---
      - primary meta tags 
     -->
     <title>weatherio</title>
     <meta name="title" content="weatherio">
-    <meta name="description" content="weatherio is a weather app made by codewithsadee">
+    <meta name="description" content="weatherio is a weather app">
     <!---
      - favicon
     -->
-    <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
+    <link rel="shortcut icon" href="./cloudy-weather.svg" type="image/svg+xml">
 
     <!----
      - google font link
@@ -29,13 +32,16 @@
     -->
     <script src="./assets/js/app.js" type="module"></script>
     <script src="./assets/js/route.js" type="module"></script>
+    
+
 
 </head>
 <body>
+    
     <header class="header">
         <div class="container">
-            <a href="#" class   ="logo">
-                <img src="./assets/images/logo.png" width="364" height="58" alt="logo">
+            <a href="#" class="logo">
+                <img src="./cloudy-weather.svg" width="364" height="58" alt="logo">
             </a>
             <div class="search-view" data-search-view>
                 <div class="search-wrapper">
@@ -49,6 +55,7 @@
                 <div class="search-result" data-search-result></div>
 
             </div>
+            
             <div class="header-actions">
                 <button class="icon-btn has-state" aria-label="open search" data-search-toggler>
                     <span class="m-icon icon">search</span>
@@ -57,6 +64,14 @@
                     <span class="m-icon">my_location</span>
                     <span class="span">Current Location</span>
                 </a>
+            </div>
+
+
+            <div class="header-actions">
+                <a href="maps.html" class="btn-primary has-state">Google Map<span class="m-icon">location_on</span></a>
+                    
+                    
+                </button>
             </div>
         </div>
     </header>
@@ -136,6 +151,9 @@
             <span class="span">Go Home</span>
         </a>
     </section>
+
+    
     
 </body>
 </html>
+

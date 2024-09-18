@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./icon.svg" type="image/svg+xml">
+    <title>Google Map</title>
+    <style>
+        #map {
+            height: 980px;
+            width: 100%;
+        }
+        #weather-info {
+            display: none;
+        }
+        
+    </style>
+    
+</head>
+<body>
+    <div id="map"></div>
+    <div id="weather-info">
+        <p><strong>Location:</strong> <span id="location-name"></span></p>
+        <p><strong>Temperature:</strong> <span id="temperature"></span> &deg;C</p>
+        <p><strong>Weather:</strong> <span id="weather-description"></span></p>
+    </div>
+    <script>
+        const apiKey = '1b8cdc0bba803557a85b5e0348c0f898';
+        function initMap() {
+            const map = new google.maps.Map(document.getElementById('map'), {
+                center: { lat: 0, lng: 0 },
+                zoom: 2,
+            });
+
+            const infoWindow = new google.maps.InfoWindow();
+
+            map.addListener('click', (e) => {
+                const location = { lat: e.latLng.lat(), lng: e.latLng.lng() };
+                infoWindow.setPosition(location);
+                infoWindow.setContent('Fetching weather information...');
+                infoWindow.open(map);
+                fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${location.lat}&lon=${location.lng}&appid=${apiKey}&units=metric`)
+                    .then((response) => response.json())
+                    .then((data) => {
+                        const locationName = data.name;
+                        const temperature = data.main.temp;
+                        const weatherDescription = data.weather[0].description;
+
+                        // Update the info window
+                        infoWindow.setContent(`Location: ${locationName}<br>Temperature: ${temperature} &deg;C<br>Weather: ${weatherDescription}`);
+                        document.getElementById('location-name').textContent = locationName;
+                        document.getElementById('temperature').textContent = temperature;
+                        document.getElementById('weather-description').textContent = weatherDescription;
+                        document.getElementById('weather-info').style.display = 'block';
+                    })
+                    .catch((error) => {
+                        console.error(error);
+                        infoWindow.setContent('Error fetching weather information.');
+                    });
+            });
+        }
+    </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=&callback=initMap">Gamepad</script>
+</body>
+</html>
